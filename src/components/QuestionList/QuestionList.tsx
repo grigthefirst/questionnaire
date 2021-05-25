@@ -72,8 +72,6 @@ export const QuestionList = () => {
                 </li>
             </ul>
 
-
-
             <Popup open={editOpen} closeOnDocumentClick onClose={closeModal}>
                 <div className="modal">
                     <button className="close" onClick={closeModal}>

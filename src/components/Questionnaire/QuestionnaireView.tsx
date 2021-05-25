@@ -10,6 +10,7 @@ type Question = {
 
 export type QuestionnaireViewProps = {
     client?: string,
+    //TODO pass versions and answers as separate params
     questions: Question[],
     submitQuestionnaire?: (client: string, answers: Answer[]) => void,
     readonly: boolean,

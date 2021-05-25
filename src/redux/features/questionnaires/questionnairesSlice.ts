@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+//TODO can and generic payload and serializing logic
 export type Answer = {
     id: string,
     text: string,

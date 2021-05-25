@@ -1,5 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+//TODO can add generic like QuestionVersion<Payload> and add some logic
+// to resolve serializers (to draw version and submit answers)
 export type QuestionVersion = {
     id: string;
     text: string;
