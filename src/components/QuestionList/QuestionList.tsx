@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { getCurrentVersions } from "../../redux/features/questions/questionsSelectors";
-import React, { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import Popup from "reactjs-popup";
 import { useAppDispatch, useAppSelector } from "../../redux/features/store";
 import { upsertQuestion } from "../../redux/features/questions/questionsSlice";

@@ -3,21 +3,17 @@ import { Answer } from "../../redux/features/questionnaires/questionnairesSlice"
 import { QuestionVersion } from "../../redux/features/questions/questionsSlice";
 import { v4 as uuidv4 } from 'uuid';
 //TODO make it more abstract, like formView or smth
-type Question = {
-    version: QuestionVersion,
-    answer?: Answer,
-}
 
 export type QuestionnaireViewProps = {
     client?: string,
-    //TODO pass versions and answers as separate params
-    questions: Question[],
+    answers?: Answer[],
+    questionVersions: QuestionVersion[],
     submitQuestionnaire?: (client: string, answers: Answer[]) => void,
     readonly: boolean,
 }
 
 export const QuestionnaireView = (props: QuestionnaireViewProps) => {
-    const [answers, setAnswers] = useState(new Map(props.questions.map(q => [q.version.id, q.answer])));
+    const [answers, setAnswers] = useState(new Map(props.answers?.map(q => [q.questionVersionId, q])));
     const [client, setClient] = useState(props.client ?? '');
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -50,13 +46,13 @@ export const QuestionnaireView = (props: QuestionnaireViewProps) => {
             <input readOnly={props.readonly} value={client}
                    onChange={(event) => setClient(event.currentTarget.value)}/>
         </p>
-        {props.questions.map(question =>
+        {props.questionVersions.map(questionVersion =>
             (<p>
-                <label className="questionnaire__question" key={question.version.id}>
-                    {question.version.text}
+                <label className="questionnaire__question" key={questionVersion.id}>
+                    {questionVersion.text}
                 </label>
-                <input readOnly={props.readonly} value={answers.get(question.version.id)?.text ?? ''}
-                       onChange={(event) => setAnswer(event.currentTarget.value, question.version.id)}/>
+                <input readOnly={props.readonly} value={answers.get(questionVersion.id)?.text ?? ''}
+                       onChange={(event) => setAnswer(event.currentTarget.value, questionVersion.id)}/>
             </p>)
         )}
         {!props.readonly && <p><input type="submit" value="Submit"/></p>}

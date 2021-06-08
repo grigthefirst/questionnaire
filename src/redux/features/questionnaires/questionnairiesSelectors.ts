@@ -3,13 +3,13 @@ import { QuestionVersion } from "../questions/questionsSlice";
 import { Answer } from "./questionnairesSlice";
 type Question = {
     version: QuestionVersion,
-    answer?: Answer,
+    answer: Answer,
 }
-export const makeGetQuestions =
+export const makeGetQuestionVersionsWithAnswers =
     (id: string) => (state: RootState): Question[] => {
     const questionnaire = state.questionnaires.questionnaires.find(q => q.id === id);
     return questionnaire?.answersIds.map(answerId => {
-        const answer = state.questionnaires.answers.find(a => a.id === answerId);
+        const answer = state.questionnaires.answers.find(a => a.id === answerId)!;
         return {
             version: state.questions.versions.find(v => v.id === answer!.questionVersionId)!,
             answer: answer

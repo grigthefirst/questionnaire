@@ -10,11 +10,7 @@ export const NewQuestionnaire = () => {
     const currentVersions = useAppSelector(getCurrentVersions);
     const dispatch = useAppDispatch();
     const [submitted, setSubmitted] = useState(false);
-    const questionsWithEmptyAnswers = currentVersions.map(v => {
-        return {
-            version: v.version,
-        };
-    });
+
     const submitAnswers = (client: string, answers: Answer[]) => {
         dispatch(submitQuestionnaire({
             id: uuidv4(),
@@ -26,7 +22,8 @@ export const NewQuestionnaire = () => {
     }
     return (<>
         {!submitted &&
-        <QuestionnaireView questions={questionsWithEmptyAnswers} submitQuestionnaire={submitAnswers} readonly={false}/>}
+        <QuestionnaireView questionVersions={currentVersions.map(q => q.version)}
+                           submitQuestionnaire={submitAnswers} readonly={false}/>}
         {submitted &&  <p>Submitted successfully</p>}
         <ul>
             <li>
