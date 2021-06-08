@@ -2,6 +2,7 @@ import { FormEvent, useState } from "react";
 import { Answer } from "../../redux/features/questionnaires/questionnairesSlice";
 import { QuestionVersion } from "../../redux/features/questions/questionsSlice";
 import { v4 as uuidv4 } from 'uuid';
+import styles from './Questionnaire.module.css';
 //TODO make it more abstract, like formView or smth
 
 export type QuestionnaireViewProps = {
@@ -38,9 +39,9 @@ export const QuestionnaireView = (props: QuestionnaireViewProps) => {
         setAnswers(newAnswers);
     }
 
-    return (<form onSubmit={handleSubmit} className="questionnaire">
+    return (<form onSubmit={handleSubmit} className={styles.questionnaire}>
         <p>
-            <label className="questionnaire__question">
+            <label>
                 Client name:
             </label>
             <input readOnly={props.readonly} value={client}
@@ -48,7 +49,7 @@ export const QuestionnaireView = (props: QuestionnaireViewProps) => {
         </p>
         {props.questionVersions.map(questionVersion =>
             (<p>
-                <label className="questionnaire__question" key={questionVersion.id}>
+                <label key={questionVersion.id}>
                     {questionVersion.text}
                 </label>
                 <input readOnly={props.readonly} value={answers.get(questionVersion.id)?.text ?? ''}

@@ -5,7 +5,7 @@ import Popup from "reactjs-popup";
 import { useAppDispatch, useAppSelector } from "../../redux/features/store";
 import { upsertQuestion } from "../../redux/features/questions/questionsSlice";
 import { v4 as uuidv4 } from 'uuid';
-
+import styles from './QuestionList.module.css'
 
 export const QuestionList = () => {
     const currentVersions = useAppSelector(getCurrentVersions);
@@ -48,9 +48,9 @@ export const QuestionList = () => {
     };
     return (
         <>
-            <div className="question-list">
+            <div>
                 {currentVersions.map(currentVersion => (
-                    <div className="question-list__version" key={currentVersion.version.id}>
+                    <div key={currentVersion.version.id}>
                         <p><b>Text:</b> {currentVersion.version.text}</p>
                         <p><b>Last edited:</b> {new Date(currentVersion.version.created).toLocaleTimeString()}</p>
                         <p>
@@ -75,11 +75,11 @@ export const QuestionList = () => {
             </ul>
 
             <Popup open={editOpen} closeOnDocumentClick onClose={closeModal}>
-                <div className="modal">
-                    <button className="close" onClick={closeModal}>
+                <div className={styles.modal}>
+                    <button className={styles.close} onClick={closeModal}>
                         &times;
                     </button>
-                    <form onSubmit={handleQuestionSubmit} className="question-list__form">
+                    <form onSubmit={handleQuestionSubmit} className={styles.form}>
                         <label>
                             Text:
                             <input type="text" value={editText} onChange={handleEditText}/>

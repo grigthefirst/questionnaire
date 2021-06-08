@@ -1,0 +1,31 @@
+.form {
+    width: 300px;
+    height: 42px;
+    border: 1px solid black;
+}
+
+.form label {
+    padding: 10px;
+}
+
+.form input {
+    margin: 10px;
+}
+
+.modal {
+    font-size: 12px;
+}
+
+.modal > .close {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    padding: 2px 5px;
+    line-height: 20px;
+    right: -10px;
+    top: -10px;
+    font-size: 24px;
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid #cfcece;
+}
