@@ -29,7 +29,7 @@ const initialState: QuestionsState = {
     questions: [],
     versions: [],
 }
-
+    //TODO can keep only question versions but might need to have edition history in future or some kind of undo
 export const questionsSlice = createSlice({
     name: 'questions',
     initialState,
