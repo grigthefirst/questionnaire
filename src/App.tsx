@@ -15,6 +15,8 @@ function App() {
             <Provider store={store}>
                 <Router>
                     <Switch>
+                        //TODO move to constants
+                        //TODO add 404
                         <Route path="/questions">
                             <QuestionList/>
                         </Route>
