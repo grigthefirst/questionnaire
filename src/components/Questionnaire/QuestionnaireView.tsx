@@ -21,6 +21,7 @@ export const QuestionnaireView = (props: QuestionnaireViewProps) => {
     const [client, setClient] = useState(props.client ?? '');
 
     const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+        //TODO add form validation
         if (props.submitQuestionnaire && !Array.from(answers.values()).some(a => !a)) {
             props.submitQuestionnaire(client, Array.from(answers.values()) as Answer[]);
         }

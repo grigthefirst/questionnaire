@@ -9,9 +9,7 @@ import { ExistingQuestionnaire } from "./components/Questionnaire/ExistingQuesti
 
 import { NewQuestionnaire } from "./components/Questionnaire/NewQuestionnaire";
 
-
 function App() {
-    //TODO add navigation
     return (
         <div className="App">
             <Provider store={store}>
